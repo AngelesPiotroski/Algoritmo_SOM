@@ -20,8 +20,8 @@ def closest_weight(point,centroides):
 
 def update_weight(centroideWeightWinner, pointKnow, vicinityFunc,LearnRestrictor):
     #apply the formula for update winner weights
-    weight_x=centroideWeightWinner[0]+vicinityFunc*LearnRestrictor*euc_distance(pointKnow,centroideWeightWinner)
-    weight_y=centroideWeightWinner[1]+vicinityFunc*LearnRestrictor*euc_distance(pointKnow,centroideWeightWinner) 
+    weight_x=centroideWeightWinner[0]+vicinityFunc*LearnRestrictor*(pointKnow[0]-centroideWeightWinner[0])
+    weight_y=centroideWeightWinner[1]+vicinityFunc*LearnRestrictor*(pointKnow[1]-centroideWeightWinner[1])
     
     centroide_weight_Updated=(weight_x,weight_y)
     return centroide_weight_Updated
