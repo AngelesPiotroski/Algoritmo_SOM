@@ -14,12 +14,14 @@ def main():
     list_points_Knowledge.append([data_x,data_y])
   data_file_txt.close() 
 
-  #start the algorithm
+  #start algorithm
   MaxStep=1000
   t=0
-  while( t < 1000):
+  while( t < MaxStep):
     
     t+=1
+    LearnRestrictor=1/t
+  #end algorithm
   
 if __name__=="__main__":
   main()
