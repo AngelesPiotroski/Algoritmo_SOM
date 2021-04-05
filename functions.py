@@ -18,10 +18,11 @@ def closest_weight(point,centroides):
         result=centroides[1]
     return result
 
+def vicinityImpact(x,y):
+    #based on the 'mexican hat function' https://lemnismath.org/2020/08/la-funcion-sombrero-mexicano/
+    return (3*(math.sin((x**2)+(y**2))))/((x**2)+(y**2))
+
 def update_weight(centroideWeightWinner, pointKnow, vicinityFunc,LearnRestrictor):
     #apply the formula for update winner weights
     weight_x=centroideWeightWinner[0]+vicinityFunc*LearnRestrictor*(pointKnow[0]-centroideWeightWinner[0])
     weight_y=centroideWeightWinner[1]+vicinityFunc*LearnRestrictor*(pointKnow[1]-centroideWeightWinner[1])
-    
-    centroide_weight_Updated=(weight_x,weight_y)
-    return centroide_weight_Updated
