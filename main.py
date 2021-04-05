@@ -16,9 +16,9 @@ def main():
 
   #start algorithm
   MaxStep=1000
-  t=0
+  t=1
   while( t < MaxStep):
-    
+  
     t+=1
     LearnRestrictor=1/t
   #end algorithm
