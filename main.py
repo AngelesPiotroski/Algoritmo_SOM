@@ -1,9 +1,9 @@
 # need >pip install matplotlib
-
+# encoding: utf-8
 import functions
 
 def main():
-  #read the knowledge and save it in to a list of float vectors:
+  #read the knowledge and save it in to a list of vectors:
   data_file_txt = open("data_r2.txt", "r")
   list_points_Knowledge = []
   print("Loading data from txt:\n")
@@ -13,6 +13,9 @@ def main():
     print ("Vector added to knowledge list:",[data_x,data_y])
     list_points_Knowledge.append([data_x,data_y])
   data_file_txt.close() 
+
+  #testing the function
+  print("el nodo mas cercano a [0,1] es: ", functions.closest_weight([0,1],list_points_Knowledge))
 
   #start algorithm
   MaxStep=1000

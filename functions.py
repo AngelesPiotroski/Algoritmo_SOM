@@ -1,22 +1,25 @@
 import random
+import math
+# encoding: utf-8
 
 def give_random_values():
     return round(random.random(),2)
 
-def euc_distance(p1, p2): 
-    return sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)
+def euc_distance(point, weightToCalcule): 
+    return math.sqrt((point[0]-weightToCalcule[0])**2+(point[1]-weightToCalcule[1])**2)
 
-def closest_weight(point,centroides):
-    #compare the distances between the centroides
-    distanceCen1=euc_distance(point, centroides[0])
-    distanceCen2=euc_distance(point, centroides[1])
-    
-    #return the centroide near to that point
-    if distanceCen1 < distanceCen2:
-        result=centroides[0]
-    else:
-        result=centroides[1]
-    return result
+def closest_weight(point, centroides):
+    #define a empty list witch save the results of euclidean results
+    allResultsEuclidean = []
+    for w in centroides:
+        print("calculating eucliden distance of", w , " = ", euc_distance(point,w)," and added to list of results")
+        allResultsEuclidean.append(euc_distance(point,w))
+    print("\n the min in the list of results is: ", min(allResultsEuclidean))
+    #catching the index of the min result
+    indexOfClosest = allResultsEuclidean.index(min(allResultsEuclidean))
+    print("the posiition of the min is: ", indexOfClosest)
+    #returning the centroide in the index of min result in allResultsEuclidean
+    return (centroides[indexOfClosest])
 
 def vicinityImpact(x,y):
     #based on the 'mexican hat function' https://lemnismath.org/2020/08/la-funcion-sombrero-mexicano/
