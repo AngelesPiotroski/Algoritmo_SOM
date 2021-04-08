@@ -23,6 +23,7 @@ def load_from_txt(data_file_txt):
 def give_random_values():
     return round(random.random(),2)
 
+#return a list of generated numbers based on number_of_clusters
 def generate_random_list(number_of_clusters):
     clustersList = []
     for i in range(number_of_clusters):
