@@ -16,11 +16,11 @@ def main():
   #start algorithm
   number_of_clusters = 2
   clustersList = []
-  #genering random values for the centroides at first time
-  for i in range(number_of_clusters):
-      clustersList.append([functions.give_random_values(),functions.give_random_values()])
   
+  #genering random values for the centroides at first time
+  clustersList = functions.generate_random_list(number_of_clusters)
   print("\nThe random values generated for the number of clusters selected (", number_of_clusters, "):" ,clustersList)
+  
   MaxStep=1000
   t=1
   # while( t < MaxStep):

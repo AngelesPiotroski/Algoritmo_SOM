@@ -23,6 +23,12 @@ def load_from_txt(data_file_txt):
 def give_random_values():
     return round(random.random(),2)
 
+def generate_random_list(number_of_clusters):
+    clustersList = []
+    for i in range(number_of_clusters):
+      clustersList.append([give_random_values(),give_random_values()])
+    return clustersList
+
 #return a euclidian distance from two points
 def euc_distance(point, weightToCalcule): 
     result=math.sqrt((point[0]-weightToCalcule[0])**2+(point[1]-weightToCalcule[1])**2)
