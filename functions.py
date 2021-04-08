@@ -23,7 +23,7 @@ def load_from_txt(data_file_txt):
 def give_random_values():
     return round(random.random(),2)
 
-#return a list of generated numbers based on number_of_clusters
+#return a list of generated random numbers based on number_of_clusters
 def generate_random_list(number_of_clusters):
     clustersList = []
     for i in range(number_of_clusters):
@@ -33,11 +33,11 @@ def generate_random_list(number_of_clusters):
 
 #show the random values generated from generate_random_list()
 def show_random_generated(clustersList):
-    print("\n#################################################")
-    print("# Showing the random values added:\t\t#")
+    print("\n#########################################################")
+    print("# Showing the random values added:\t\t\t#")
     for r in clustersList:
-        print("# Vector added to clusters_List: ",r,"\t#")
-    print("#################################################\n")
+        print("# Cluster vector added to clusters_List: ",r,"\t#")
+    print("#########################################################\n")
     
 #return a euclidian distance from two points
 def euc_distance(point, weightToCalcule): 
@@ -57,7 +57,7 @@ def closest_weight(point, centroides):
     indexOfClosest = allResultsEuclidean.index(min(allResultsEuclidean))
     print("the position of the min is: ", indexOfClosest, " (positions in vectors starts in cero)")
     #returning the centroide in the index of min result in allResultsEuclidean
-    return (centroides[indexOfClosest]) 
+    return (centroides[indexOfClosest])
 
 #return the difference between two points in R2
 def diff_r2(point1,point2):
@@ -68,11 +68,13 @@ def diff_r2(point1,point2):
 #return the value from evaluate the function
 def vicinityImpactFunction(centroideWeightWinner,centroideToUpdate):
     #1 con la ganadora >1 <0 si no es la ganadora.  vecindad entre conjunto de pesos distancia entre conuntos de pesos y la ganadora
-    return (1/(1+diff_r2(centroideToUpdate,centroideWeightWinner)))
-    
-def update_weight(centroide, pointKnow, vicinityFunc,LearnRestrictor):
+    #return (1/(1+diff_r2(centroideToUpdate,centroideWeightWinner)))
+    return (1/(1+euc_distance(centroideToUpdate,centroideWeightWinner)))
+
+#return the centroide updated with the new values
+def update_weight(centroide, pointKnow, vecinityFuncValue,LearnRestrictor):
     #apply the formula for update weights
-    weight_x=centroideWeightWinner[0]+vicinityImpactFunction*LearnRestrictor*(pointKnow[0]-centroideWeightWinner[0])
-    weight_y=centroideWeightWinner[1]+vicinityImpactFunction*LearnRestrictor*(pointKnow[1]-centroideWeightWinner[1])
+    weight_x=centroideWeightWinner[0]+vecinityFuncValue*LearnRestrictor*(pointKnow[0]-centroideWeightWinner[0])
+    weight_y=centroideWeightWinner[1]+vecinityFuncValue*LearnRestrictor*(pointKnow[1]-centroideWeightWinner[1])
     centroide_weight_Updated=(weight_x,weight_y)
     return centroide_weight_Updated
