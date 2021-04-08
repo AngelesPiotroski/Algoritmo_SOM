@@ -28,8 +28,17 @@ def generate_random_list(number_of_clusters):
     clustersList = []
     for i in range(number_of_clusters):
       clustersList.append([give_random_values(),give_random_values()])
+    show_random_generated(clustersList)
     return clustersList
 
+#show the random values generated from generate_random_list()
+def show_random_generated(clustersList):
+    print("\n#################################################")
+    print("# Showing the random values added:\t\t#")
+    for r in clustersList:
+        print("# Vector added to clusters_List: ",r,"\t#")
+    print("#################################################\n")
+    
 #return a euclidian distance from two points
 def euc_distance(point, weightToCalcule): 
     result=math.sqrt((point[0]-weightToCalcule[0])**2+(point[1]-weightToCalcule[1])**2)
