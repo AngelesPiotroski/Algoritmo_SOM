@@ -1,13 +1,14 @@
 # encoding: utf-8
 # importar todas las funciones de pylab
 from pylab import *
-
+from time import *
 # importar el módulo pyplot
 import matplotlib.pyplot as plt
 
 def plot_r2(points_to_plot,centroides_to_plot):
+    plt.ion()
     #plot atributes
-    title('Valores cargados:')
+    title('Valores')
     xlabel('Eje X')
     ylabel('Eje Y')
     #x list from points
@@ -24,5 +25,9 @@ def plot_r2(points_to_plot,centroides_to_plot):
     scatter(xArrayCentroide,yArrayCentroide, label='Pesos', marker = 'd')
     #make legend
     plt.legend(loc='upper left')
-    show()
+    plt.draw()
+    plt.pause(0.5)
+    plt.cla()
+
+    
 

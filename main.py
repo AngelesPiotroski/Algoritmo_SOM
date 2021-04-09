@@ -17,19 +17,22 @@ def main():
   #start algorithm
   number_of_clusters = 2
   clustersList = []
-  MaxStep=1000
+  MaxStep=10
   t=1
  
   #genering random values for the centroides at first time
   clustersList = functions.generate_random_list(number_of_clusters)
 
   #plot the initial values
-  plot_functions.plot_r2(list_points_Knowledge,clustersList)
+  #plot_functions.plot_r2(list_points_Knowledge,clustersList)
   
   while( t < MaxStep):
+    #just for test
+    clustersList = functions.generate_random_list(number_of_clusters)
+    plot_functions.plot_r2(list_points_Knowledge,clustersList)
     
-     t+=1
-     LearnRestrictor=1/t
+    t+=1
+    LearnRestrictor=1/t
   #end algorithm
   
 if __name__=="__main__":
