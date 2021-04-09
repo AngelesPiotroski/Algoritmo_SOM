@@ -17,7 +17,7 @@ def main():
   #start algorithm
   number_of_clusters = 2
   clustersList = []
-  MaxStep=10
+  MaxStep=1000
   t=1
  
   #genering random values for the centroides at first time
