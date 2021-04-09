@@ -21,7 +21,7 @@ def plot_r2(points_to_plot,centroides_to_plot):
     #x list from centroides
     yArrayCentroide= [weight[1] for weight in centroides_to_plot]
     #make a plot
-    scatter(xArrayCentroide,yArrayCentroide, label='Pesos')
+    scatter(xArrayCentroide,yArrayCentroide, label='Pesos', marker = 'd')
     #make legend
     plt.legend(loc='upper left')
     show()
