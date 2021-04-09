@@ -1,5 +1,4 @@
 # encoding: utf-8
-import Tkinter
 # importar todas las funciones de pylab
 from pylab import *
 
