@@ -44,6 +44,9 @@ class Main_window:
         #number steps label
         label_steps_final = Label(frame_values_selected, text="Number of steps selected: "+str(self.MaxStep))
         label_steps_final.pack()
+        #start the SOM algorithm button
+        button_start_som = Button(frame_values_selected,text="START SOM ALGORITHM")
+        button_start_som.pack()
 
     #setter methods
     def setPathFile(self,label_data_set_path):
@@ -59,8 +62,11 @@ class Main_window:
     
     def setSteps(self, sv,label_steps_final):
         try:
-            self.MaxStep = int(sv.get())
-            label_steps_final.config(text="Number of steps selected: "+str(self.MaxStep))
+            #if is a number and > 0
+            if(int(sv.get()) > 0):
+                self.MaxStep = int(sv.get())
+                label_steps_final.config(
+                    text="Number of steps selected: "+str(self.MaxStep))
             print(self.MaxStep)
         except:
             print("Not a number")
