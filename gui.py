@@ -22,7 +22,7 @@ ButtonOpenDataSetFile.grid(row=0, column=1)
 labelClusterAsk = tkinter.Label(wd, text="Seleccione la cantidad de Clusters:")
 labelClusterAsk.grid(row=1, column=0)
 #spin for clusters number
-sp = tkinter.Spinbox(wd, from_= 0, to = 100)
+sp = tkinter.Spinbox(wd, from_= 1, to = 100)
 sp.grid(row=1, column=1)
 
 wd.mainloop()
