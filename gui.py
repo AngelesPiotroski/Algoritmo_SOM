@@ -4,7 +4,7 @@ class Main_window:
     root = Tk()
     root.title("Main Menú - SOM (Self-Organizing Map) - Stetson & Piotroski")
     pathDataSetFile = "Not selected."
-    clustersNumber = 0
+    clustersNumber = 1
     
     def __init__(self):
         #inputs frame
