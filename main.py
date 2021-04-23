@@ -17,7 +17,7 @@ def main():
   #start algorithm
 
   clustersList = []
-  MaxStep=3000
+  MaxStep=5
   t=1
   LearnRestrictor=1
   #take the number of clusters
@@ -25,9 +25,11 @@ def main():
   #generate the clusters
   clustersList = functions.generate_random_list(number_of_clusters)
   listaClusterInicial= clustersList
+  listModifCluster= []
   while( t < MaxStep):
     #just for test
     #plot_functions.plot_r2(list_points_Knowledge,clustersList)
+    print("####################iteracion nro ", t)
     #for each known point in the data list
     for point in list_points_Knowledge:
       #get the winning centroid
@@ -35,23 +37,25 @@ def main():
       #for each cluster in the cluster list
       for centroide in clustersList:
         #calculate the vicinity function
-        vecinity_value_X= functions.vicinityImpactFunctionInX(winning_centroid,centroide )
-        vecinity_value_Y= functions.vicinityImpactFunctionInY(winning_centroid,centroide )
-        round(vecinity_value_X,2)
-        round(vecinity_value_Y,2)
+        vecinity_value= functions.vicinityImpactFunction(winning_centroid,centroide )
+        print("*********************vecindad ",vecinity_value)
         #update the weights of each cluster
-        #print("el viejo valor del centroide es ",centroide)
-        centroide= functions.update_weight(winning_centroid , point, vecinity_value_X,vecinity_value_Y , LearnRestrictor)
-        #print("el nuevo valor del centroide es ",centroide)
-        
+        centroide= functions.update_weight(winning_centroid ,point, vecinity_value , LearnRestrictor)
+        print("ceeentroidee------------------------",centroide)
+        #add the modified clusters to the auxiliary list
+        listModifCluster.append(centroide)
+        plot_functions.plot_r2(list_points_Knowledge,clustersList)
+    #load the updated list to the cluster list
+    #clustersList.clear()
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    clustersList = listModifCluster
     #show iteration
+    #plot_functions.plot_r2(list_points_Knowledge,clustersList)
     t+=1
     LearnRestrictor=1/t
     print("####################----------------------------------------iteracion nro ", t)
-    print("####################----------------------------------------el lear es  ", LearnRestrictor)
-
   #end algorithm
-  plot_functions.plot_r2(list_points_Knowledge,clustersList)
+  #plot_functions.plot_r2(list_points_Knowledge,clustersList)
   print("los valores iniciales de los clusters son ",listaClusterInicial)
   print("los valores finales de los clusters son ",clustersList)
   

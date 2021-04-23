@@ -11,8 +11,8 @@ def plot_r2(points_to_plot,centroides_to_plot):
     title('Valores')
     xlabel('Eje X')
     ylabel('Eje Y')
-    #xlim(-10,10)
-    #ylim(-10,10)
+    xlim(-10,10)
+    ylim(-10,10)
     #x list from points
     xArrayPoints = [point[0] for point in points_to_plot]
     #y list from points

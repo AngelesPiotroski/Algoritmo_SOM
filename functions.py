@@ -1,5 +1,6 @@
 import math
 import random
+
 #encoding: utf-8
 
 #return a list of vectors from the .txt
@@ -13,7 +14,7 @@ def load_from_txt(data_file_txt):
         data_x=float(data[0:3])
         data_y=float(data[4:7])
         print ("# Vector added to knowledge list:",[data_x,data_y],"#")
-        list_points_Knowledge.append([data_x,data_y])
+        list_points_Knowledge.append([ data_x,data_y])
     print("##############################################\n")
     #close the .txt file
     data_file_txt.close()
@@ -21,7 +22,8 @@ def load_from_txt(data_file_txt):
 
 #give random values like: a,bc
 def give_random_values():
-    return round(random.random(),2)
+    return round(random.random(), 2)
+
 
 #return a list of generated random numbers based on number_of_clusters
 def generate_random_list(number_of_clusters):
@@ -65,23 +67,19 @@ def diff_r2(x1,x2):
     diff_result=x1-x2
     return diff_result
 
-#return the value from evaluate the function
-def vicinityImpactFunctionInX(centroideWeightWinner,centroideToUpdate):
-    #1 con la ganadora >1 <0 si no es la ganadora.  vecindad entre conjunto de pesos distancia entre conuntos de pesos y la ganadora
-    return (1/(1+diff_r2(centroideToUpdate[0],centroideWeightWinner[0])))
-    #return (1/(1+euc_distance(centroideToUpdate,centroideWeightWinner)))
 
 #return the value from evaluate the function
-def vicinityImpactFunctionInY(centroideWeightWinner,centroideToUpdate):
+def vicinityImpactFunction(centroideWeightWinner,centroideToUpdate):
     #1 con la ganadora >1 <0 si no es la ganadora.  vecindad entre conjunto de pesos distancia entre conuntos de pesos y la ganadora
-    return (1/(1+diff_r2(centroideToUpdate[1],centroideWeightWinner[1])))
+    #return (1/(1+diff_r2(centroideToUpdate[0],centroideWeightWinner[0])))
     #return (1/(1+euc_distance(centroideToUpdate,centroideWeightWinner)))
-
+    valueVecin = (1/(1+euc_distance(centroideToUpdate,centroideWeightWinner)))
+    return valueVecin
 
 #return the centroide updated with the new values
-def update_weight(centroideWeightWinner, pointKnow, vecinityFuncValueX,vecinityFuncValueY,LearnRestrictor):
+def update_weight(centroideWeightWinner, pointKnow, vecinityFuncValue,LearnRestrictor):
     #apply the formula for update weights
-    weight_x=centroideWeightWinner[0]+vecinityFuncValueX*LearnRestrictor*(pointKnow[0]-centroideWeightWinner[0])
-    weight_y=centroideWeightWinner[1]+vecinityFuncValueY*LearnRestrictor*(pointKnow[1]-centroideWeightWinner[1])
-    centroide_weight_Updated=(round(weight_x,2),round(weight_y,2))
+    weight_x= (centroideWeightWinner[0])+float(vecinityFuncValue)*float(LearnRestrictor)*float(pointKnow[0]-centroideWeightWinner[0])
+    weight_y= (centroideWeightWinner[1])+float(vecinityFuncValue)*float(LearnRestrictor)*float(pointKnow[1]-centroideWeightWinner[1])
+    centroide_weight_Updated=(weight_x,weight_y)
     return centroide_weight_Updated
